@@ -21,6 +21,7 @@ def main():
     line = ENTRY
     assert 1 <= len(line) <= 140, "entry must be 1-140 characters"
     assert line == line.strip(), "entry must not have surrounding whitespace"
+    assert "\n" not in line and "\r" not in line, "entry must be one line"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8", newline="") as f:
         f.write(line)
